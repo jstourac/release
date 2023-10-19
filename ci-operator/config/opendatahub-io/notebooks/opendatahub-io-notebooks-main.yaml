@@ -827,7 +827,7 @@ tests:
         IFS=':' read -r -a NOTEBOOK_IMAGE <<< "${JUPYTER_MINIMAL_IMAGE}"
         make deploy8-jupyter-minimal-ubi8-python-3.8 \
             -e IMAGE_REGISTRY="${NOTEBOOK_IMAGE[0]}" -e NOTEBOOK_TAG="${NOTEBOOK_IMAGE[1]}"
-        make test-jupyter-minimal-ubi8-python-3.8
+        make test-jupyter-minimal-ubi8-python-3.8 -e NOTEBOOK_REPO_BRANCH_BASE="https://raw.githubusercontent.com/${REPO_OWNER}/notebooks/${PULL_HEAD_REF}"
         make undeploy8-jupyter-minimal-ubi8-python-3.8
       dependencies:
       - env: JUPYTER_MINIMAL_IMAGE
